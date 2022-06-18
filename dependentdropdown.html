@@ -1,0 +1,136 @@
+<html>
+<body>
+    <div class="div1" style="background-color:rgb(104, 107, 107); font-style: stulus; color:aliceblue;">   
+    <h1 class="p1" >UI - Assignment</h1>
+    </div>
+    <div class="div2">
+    <form name="form1" id="form1" class="form1" action="">
+        <div class="div3" >
+        Group A: <select name="level1" id="level1" >
+          <option value="" >Select</option>
+        </select>
+        </div>
+        <br><br>
+        <div class="div4">
+        Group B: <select name="level2" id="level2" >
+          <option value="" selected="selected">Select</option>
+        </select>
+        </div>
+        <br><br>
+        <div class="div5">
+        Group C: <select name="level3" id="level3" >
+          <option value="" selected="selected">Select</option>
+        </select>
+        </div>
+        <br><br>
+      </form>
+    </div>
+    <div class="div7"> 
+      <p2 style="font-size:22px;">Output:</p2> 
+    </div>
+
+    <div class="div6">
+      
+    </div>
+
+<script>
+var subjectObject = {
+  "A": {
+    "A1": ["Sub_A1", "Sub_A2"],
+    "A2": ["Sub_A3", "Sub_A4"],
+    "A3": ["Sub_A5", "Sub_A6"]
+  },
+  "B": {
+    "B1": ["Sub_B1", "Sub_B2"],
+    "B2": ["Sub_B3", "Sub_B4"],
+    "B3": ["Sub_B5", "Sub_B6"]
+  }
+}
+window.onload = function() {
+  var level1sel = document.getElementById("level1");
+  var level2sel = document.getElementById("level2");
+  var level3sel = document.getElementById("level3");
+  for (var x in subjectObject) {
+    level1sel.options[level1sel.options.length] = new Option(x, x);
+  }
+  level1sel.onchange = function() {
+    level3sel.length = 1;
+    level2sel.length = 1;
+    for (var y in subjectObject[this.value]) {
+      level2sel.options[level2sel.options.length] = new Option(y, y);
+    }
+  }
+  level1sel.onchange () ;
+
+  level2sel.onchange = function() {
+    level3sel.length = 1;
+    var z = subjectObject[level1sel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      level3sel.options[level3sel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+  level2sel.onchange();
+
+  function printSelectedItem() {
+      var e = document.getElementById("level1");
+      var selectedItem = e.options[e.selectedIndex].value;
+      document.write(selectedItem);
+     }
+}
+</script>
+
+
+<style>
+  body{
+     background-color: #ffffff;
+  }
+  .div1{
+    padding: 5px;
+    text-align: center;
+  }
+  .div2{
+    height: 180px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  .form1{
+    padding: 100px;
+  }
+  .div3{
+    position:absolute;
+    left: 450px;
+    top:170px;
+    width: 100px;
+    height: 60px;
+    font-size: 25px;
+  }
+  .div4{
+    position:absolute;
+    left:780px;
+    top:170px;
+    width: 120px;
+    font-size: 25px;
+  }
+  .div5{
+    position: absolute;
+    left:620px;
+    top:290;
+    font-size: 25px;
+  }
+  .div6{
+    width:1070px;
+    height:70px;
+    position: absolute;
+    left:150px;
+    top:420px;
+    border: 2px solid black;
+  }
+  .div7{
+     position : absolute;
+     left: 160px;
+     top: 390px;
+  }
+</style>
+
+</body>
+</html>
